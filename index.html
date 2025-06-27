@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayush Saluja - Senior Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #64ffda;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ccd6f6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #64ffda;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ccd6f6;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-text .highlight {
+            color: #64ffda;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: #8892b0;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #64ffda;
+            color: #0f0f23;
+        }
+
+        .btn-primary:hover {
+            background: #4fd1c7;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 2px solid #64ffda;
+            color: #64ffda;
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(100, 255, 218, 0.1);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 500px;
+        }
+
+        .floating-cards {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .tech-card {
+            position: absolute;
+            background: rgba(100, 255, 218, 0.1);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            color: #64ffda;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .tech-card:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .tech-card:nth-child(2) { top: 20%; right: 20%; animation-delay: 1s; }
+        .tech-card:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 2s; }
+        .tech-card:nth-child(4) { bottom: 20%; right: 10%; animation-delay: 3s; }
+        .tech-card:nth-child(5) { top: 50%; left: 50%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ccd6f6;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #64ffda;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: rgba(26, 26, 46, 0.5);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            color: #8892b0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .stat-item {
+            background: rgba(100, 255, 218, 0.1);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #64ffda;
+            display: block;
+        }
+
+        .stat-label {
+            color: #8892b0;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(100, 255, 218, 0.5);
+        }
+
+        .company-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .company-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #64ffda;
+        }
+
+        .role {
+            color: #ccd6f6;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .duration {
+            color: #8892b0;
+            font-size: 0.9rem;
+        }
+
+        .achievements {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .achievements li {
+            color: #8892b0;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .achievements li::before {
+            content: '▶';
+            color: #64ffda;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: rgba(26, 26, 46, 0.3);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: rgba(100, 255, 218, 0.5);
+        }
+
+        .skill-category h3 {
+            color: #64ffda;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: rgba(100, 255, 218, 0.1);
+            color: #64ffda;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(100, 255, 218, 0.3);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(100, 255, 218, 0.5);
+        }
+
+        .project-title {
+            color: #64ffda;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: #8892b0;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-badge {
+            background: rgba(100, 255, 218, 0.1);
+            color: #64ffda;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(100, 255, 218, 0.3);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: rgba(26, 26, 46, 0.5);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-text {
+            color: #8892b0;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            color: #64ffda;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border: 2px solid #64ffda;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .contact-link:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f0f23;
+            padding: 2rem 0;
+            text-align: center;
+            color: #8892b0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .company-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo">Ayush Saluja</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Hi, I'm <span class="highlight">Ayush Saluja</span></h1>
+                        <p>Senior Software Engineer specializing in distributed systems, backend architecture, and performance optimization at scale</p>
+                        <div class="cta-buttons">
+                            <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                            <a href="#experience" class="btn btn-secondary">View Experience</a>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="floating-cards">
+                            <div class="tech-card">Java & Spring Boot</div>
+                            <div class="tech-card">gRPC & Microservices</div>
+                            <div class="tech-card">Apache Flink</div>
+                            <div class="tech-card">MongoDB & Redis</div>
+                            <div class="tech-card">AWS & Azure</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title fade-in">About Me</h2>
+                <div class="about-content fade-in">
+                    <div class="about-text">
+                        <p>I'm a Senior Software Engineer with 7+ years of experience building scalable backend systems and distributed architectures. Currently at LinkedIn, I lead performance optimization initiatives that serve 900M+ users worldwide.</p>
+                        <p>My expertise spans across microservices architecture, stream processing, and cloud infrastructure. I've successfully led teams, mentored engineers, and delivered solutions that have generated millions in revenue impact while significantly improving system performance.</p>
+                        <p>I'm passionate about solving complex distributed systems challenges and have a proven track record of optimizing performance, reducing costs, and building robust, scalable solutions.</p>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number">7+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">900M+</span>
+                            <span class="stat-label">Users Served</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">80%</span>
+                            <span class="stat-label">Deployment Failure Reduction</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">$50M+</span>
+                            <span class="stat-label">Revenue Impact</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="experience">
+            <div class="container">
+                <h2 class="section-title fade-in">Professional Experience</h2>
+                <div class="experience-timeline">
+                    <div class="timeline-item fade-in">
+                        <div class="company-header">
+                            <div>
+                                <div class="company-name">LinkedIn</div>
+                                <div class="role">Senior Software Engineer</div>
+                            </div>
+                            <div class="duration">Oct 2024 – Present</div>
+                        </div>
+                        <ul class="achievements">
+                            <li>Led gRPC migration achieving 5x performance improvement for 900M+ users</li>
+                            <li>Built end-to-end Flink testing solution, reducing deployment failures by 80%</li>
+                            <li>Implemented organization-wide stress testing initiative</li>
+                            <li>Mentored cross-functional team of 8 engineers on distributed systems</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item fade-in">
+                        <div class="company-header">
+                            <div>
+                                <div class="company-name">Microsoft</div>
+                                <div class="role">Software Engineer II</div>
+                            </div>
+                            <div class="duration">Mar 2022 – Oct 2024</div>
+                        </div>
+                        <ul class="achievements">
+                            <li>Contributed to CosmosDB development with $50M+ revenue impact</li>
+                            <li>Developed MongoDB v-core product achieving 99.95% availability SLA</li>
+                            <li>Automated disaster recovery reducing incident response time by 40%</li>
+                            <li>Implemented query optimization improving performance by 300%</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item fade-in">
+                        <div class="company-header">
+                            <div>
+                                <div class="company-name">Swiggy</div>
+                                <div class="role">Software Engineer II</div>
+                            </div>
+                            <div class="duration">Jan 2019 – Feb 2022</div>
+                        </div>
+                        <ul class="achievements">
+                            <li>Developed rating system handling 50K+ QPS with event-driven architecture</li>
+                            <li>Integrated gRPC reducing cloud costs by 40% ($1.2M savings)</li>
+                            <li>Optimized Redis caches achieving 35% hit rate improvement</li>
+                            <li>Reduced response size by 94% improving mobile performance for 20M+ users</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item fade-in">
+                        <div class="company-header">
+                            <div>
+                                <div class="company-name">Samsung R&D</div>
+                                <div class="role">Software Engineer</div>
+                            </div>
+                            <div class="duration">Aug 2017 – Jan 2019</div>
+                        </div>
+                        <ul class="achievements">
+                            <li>Developed testing tools reducing manual effort by 70%</li>
+                            <li>Created RESTful APIs for Samsung OS data sharing</li>
+                            <li>Optimized test suite achieving 45% execution time reduction</li>
+                            <li>Trained 15+ engineers improving interview success rate by 80%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title fade-in">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category fade-in">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">Golang</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Scala</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category fade-in">
+                        <h3>Frameworks & Tools</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Spring Boot</span>
+                            <span class="skill-tag">Apache Flink</span>
+                            <span class="skill-tag">gRPC</span>
+                            <span class="skill-tag">Kafka</span>
+                            <span class="skill-tag">Redis</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Kubernetes</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category fade-in">
+                        <h3>Databases</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">DynamoDB</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">CosmosDB</span>
+                            <span class="skill-tag">Elasticsearch</span>
+                            <span class="skill-tag">Cassandra</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category fade-in">
+                        <h3>Cloud & DevOps</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Azure</span>
+                            <span class="skill-tag">GCP</span>
+                            <span class="skill-tag">CI/CD</span>
+                            <span class="skill-tag">Prometheus</span>
+                            <span class="skill-tag">Grafana</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category fade-in">
+                        <h3>System Design</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Microservices</span>
+                            <span class="skill-tag">Distributed Systems</span>
+                            <span class="skill-tag">Event-Driven Architecture</span>
+                            <span class="skill-tag">Stream Processing</span>
+                            <span class="skill-tag">Load Balancing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title fade-in">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card fade-in">
+                        <h3 class="project-title">MongoDB Load Testing Framework</h3>
+                        <p class="project-description">Comprehensive performance analysis tool that reduced manual testing by 80% using advanced monitoring and automation techniques.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Locust</span>
+                            <span class="tech-badge">Prometheus</span>
+                            <span class="tech-badge">Grafana</span>
+                            <span class="tech-badge">Spring Boot</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <h3 class="project-title">DiceDB Contribution</h3>
+                        <p class="project-description">Enhanced connection pooling efficiency in high-performance Redis-compatible database by adding functionality for managing open connections.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Redis</span>
+                            <span class="tech-badge">Connection Pooling</span>
+                            <span class="tech-badge">Performance Optimization</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <h3 class="project-title">Flink Testing Pipeline</h3>
+                        <p class="project-description">End-to-end testing solution for Apache Flink applications integrated with CI/CD, reducing deployment failures by 80%.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Apache Flink</span>
+                            <span class="tech-badge">CI/CD</span>
+                            <span class="tech-badge">Stream Processing</span>
+                            <span class="tech-badge">Testing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title fade-in">Let's Connect</h2>
+                <div class="contact-content fade-in">
+                    <p class="contact-text">I'm always interested in discussing new opportunities, challenging projects, or sharing insights about distributed systems and backend engineering.</p>
+                    <div class="contact-links">
+
+                        <a href="tel:9711811307" class="contact-link">Call Me</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ayush Saluja. Built with passion for clean code and scalable systems.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 15, 35, 0.98)';
+            } else {
+                header.style.background = 'rgba(15, 15, 35, 0.95)';
+            }
+        });
+
+        // Add interactive hover effects to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(-5px) scale(1)';
+            });
+        });
+
+        // Removed typing effect to prevent HTML code display
+    </script>
+</body>
+</html>
